@@ -10,7 +10,8 @@ export const getRouter = () => {
     context: { queryClient },
     scrollRestoration: true,
     defaultPreloadStaleTime: 0,
+    basepath: import.meta.env.BASE_URL.replace(/\/$/, "") || "/",
   });
 
-  return router;
+  return { router, queryClient };
 };

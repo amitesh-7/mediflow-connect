@@ -1,0 +1,22 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <title>MedFlow</title>
+    <script>
+      // SPA fallback for GitHub Pages: rewrite the URL to the root index.html
+      // while preserving the path so the client router can render it.
+      (function () {
+        var repo = "/mediflow-connect";
+        var path = window.location.pathname;
+        var search = window.location.search;
+        var hash = window.location.hash;
+        var rest = path.indexOf(repo) === 0 ? path.slice(repo.length) : path;
+        var redirect = repo + "/?p=" + encodeURIComponent(rest) +
+          (search ? "&q=" + encodeURIComponent(search.slice(1)) : "") + hash;
+        window.location.replace(redirect);
+      })();
+    </script>
+  </head>
+  <body></body>
+</html>
