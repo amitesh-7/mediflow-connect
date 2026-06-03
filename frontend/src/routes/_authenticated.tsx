@@ -79,10 +79,17 @@ function AuthenticatedLayout() {
   const [unreadOrderIds, setUnreadOrderIds] = useState<string[]>([]);
 
   useEffect(() => {
+    if (!loading && !user) {
+      navigate({ to: "/login" });
+    }
+  }, [loading, user, navigate]);
+
+  useEffect(() => {
     if ("Notification" in window && Notification.permission === "default") {
       Notification.requestPermission();
     }
   }, []);
+
 
 const sendNativeNotification = (title: string, body: string) => {
     if ("Notification" in window && Notification.permission === "granted") {
@@ -122,13 +129,14 @@ const sendNativeNotification = (title: string, body: string) => {
     navigate({ to: "/login" });
   };
 
-  if (loading) {
+  if (loading || !user) {
     return (
       <div className="flex h-screen items-center justify-center bg-slate-50">
         <Activity className="h-10 w-10 animate-pulse text-primary" />
       </div>
     );
   }
+
 
   const roleLabel = profile?.role === "mr" ? "Medical Rep" : "Doctor";
   const displayName = profile?.full_name || profile?.email?.split('@')[0] || "User";
