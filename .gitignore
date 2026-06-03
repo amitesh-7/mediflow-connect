@@ -20,6 +20,8 @@ frontend/.output/
 frontend/.vinxi/
 frontend/.tanstack/
 frontend/.nitro/
+backend/dist/
+backend/*.tsbuildinfo
 
 # Editor files
 .vscode/

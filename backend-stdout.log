@@ -28,3 +28,5 @@
 [ERROR] 23:09:44 Error: JWT_SECRET is required in backend/.env
 [INFO] 23:09:45 Restarting: K:\Anurag\mediflow-connect\backend\src\middleware\requireAuth.ts has been modified
 [ERROR] 23:09:46 Error: JWT_SECRET is required in backend/.env
+[INFO] 23:26:11 Restarting: K:\Anurag\mediflow-connect\backend\src\server.ts has been modified
+[ok]  MediFlow backend -> http://localhost:5000

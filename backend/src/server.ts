@@ -52,9 +52,13 @@ app.use((err: Error, _req: express.Request, res: express.Response, _next: expres
   res.status(500).json({ error: 'Internal server error' });
 });
 
-// ── Start ───────────────────────────────────────────────────
-app.listen(PORT, () => {
-  console.log(`[ok]  MediFlow backend -> http://localhost:${PORT}`);
-});
+// ── Start (local dev only) ──────────────────────────────────
+// Vercel sets VERCEL=1; in that environment we just export the app
+// and Vercel's serverless runtime invokes it per request.
+if (!process.env.VERCEL) {
+  app.listen(PORT, () => {
+    console.log(`[ok]  MediFlow backend -> http://localhost:${PORT}`);
+  });
+}
 
 export default app;

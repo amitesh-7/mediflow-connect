@@ -5,10 +5,10 @@ import tsconfigPaths from "vite-tsconfig-paths";
 import { TanStackRouterVite } from "@tanstack/router-plugin/vite";
 import path from "node:path";
 
-// Base path for GitHub Pages. Override with VITE_BASE if deploying elsewhere.
-// In dev, always serve from "/" so the Lovable preview works.
+// Base path: defaults to "/" so Vercel / Netlify / generic hosts work out of the box.
+// Set VITE_BASE="/mediflow-connect/" (etc.) for sub-path deployments like GitHub Pages.
 export default defineConfig(({ command }) => ({
-  base: command === "build" ? (process.env.VITE_BASE ?? "/mediflow-connect/") : "/",
+  base: process.env.VITE_BASE || (command === "build" ? "/" : "/"),
   server: { host: "::", port: 3000 },
   plugins: [
     TanStackRouterVite({
