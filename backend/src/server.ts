@@ -28,6 +28,18 @@ app.get('/health', (_req, res) => {
   res.json({ ok: true, ts: new Date().toISOString() });
 });
 
+// ── Root ────────────────────────────────────────────────────
+app.get('/', (_req, res) => {
+  res.json({
+    name: 'MediFlow Connect API',
+    status: 'ok',
+    version: '1.0.0',
+    health: '/health',
+    api: '/api/*',
+    frontend: process.env.FRONTEND_URL || 'not configured',
+  });
+});
+
 // ── API Routes ──────────────────────────────────────────────
 // Public routes (no JWT required)
 app.use('/api/auth',          authRoutes);
